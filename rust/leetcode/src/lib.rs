@@ -11,6 +11,7 @@ pub mod lc_0283_move_zeroes;
 pub mod lc_0383_ransom_note;
 pub mod lc_0704_binary_search;
 pub mod lc_0977_squares_of_a_sorted_array;
+pub mod lc_0136_single_number;
 // pub mod lc_0232_implement_queue_using_stacks;
 mod utils;
 

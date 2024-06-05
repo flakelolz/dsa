@@ -8,30 +8,29 @@ class ListNode:
         self.next = next
 
 
-class Solution:
-    # Time Complexity: O(n+m)
-    # Space Complexity: O(1)
-    def mergeTwoLists(
-        self, list1: Optional[ListNode], list2: Optional[ListNode]
-    ) -> Optional[ListNode]:
-        dummy = ListNode()
-        tail = dummy
+# Time Complexity: O(n+m)
+# Space Complexity: O(1)
+def mergeTwoLists(
+    list1: Optional[ListNode], list2: Optional[ListNode]
+) -> Optional[ListNode]:
+    dummy = ListNode()
+    tail = dummy
 
-        while list1 and list2:
-            if list1.val < list2.val:
-                tail.next = list1
-                list1 = list1.next
-            else:
-                tail.next = list2
-                list2 = list2.next
-            tail = tail.next
-
-        if list1:
+    while list1 and list2:
+        if list1.val < list2.val:
             tail.next = list1
-        elif list2:
+            list1 = list1.next
+        else:
             tail.next = list2
+            list2 = list2.next
+        tail = tail.next
 
-        return dummy.next
+    if list1:
+        tail.next = list1
+    elif list2:
+        tail.next = list2
+
+    return dummy.next
 
 
 def checker(list1, list2):
@@ -59,7 +58,7 @@ def test_mergeTwoLists_1():
     answer.next.next.next.next = ListNode(4)
     answer.next.next.next.next.next = ListNode(4)
 
-    assert checker(Solution().mergeTwoLists(list1, list2), answer) is True
+    assert checker(mergeTwoLists(list1, list2), answer) is True
 
 
 def test_mergeTwoLists_2():
@@ -68,7 +67,7 @@ def test_mergeTwoLists_2():
 
     answer = ListNode()
 
-    assert checker(Solution().mergeTwoLists(list1, list2), answer) is True
+    assert checker(mergeTwoLists(list1, list2), answer) is True
 
 
 def test_mergeTwoLists_3():
@@ -77,5 +76,4 @@ def test_mergeTwoLists_3():
 
     answer = ListNode(0)
 
-    assert checker(Solution().mergeTwoLists(list1, list2), answer) is True
-
+    assert checker(mergeTwoLists(list1, list2), answer) is True
